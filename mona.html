@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>دكرياتنا 💕</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#ffd1e8, #ffb6d5);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* صفحة الدخول */
+.login {
+    margin-top: 150px;
+    color: #d63384;
+}
+
+.login input {
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.login button {
+    margin-top: 15px;
+}
+
+/* القلوب */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+
+.container {
+    display: none;
+    padding-top: 50px;
+    color: #c2185b;
+}
+
+/* الصور بالطول */
+.memory {
+    margin: 30px auto;
+    width: 80%;
+}
+
+.memory img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.memory p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #880e4f;
+}
+
+button {
+    background-color: #ff69b4;
+    border: none;
+    padding: 12px 25px;
+    color: white;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #ff1493;
+}
+</style>
+</head>
+
+<body>
+
+<!-- الموسيقى -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- صفحة الدخول -->
+<div class="login" id="login">
+    <h2>🔐 ادخلي الرمز</h2>
+    <p>💌 لو معرفتيش الرمز يبقى مبتحبينيش </p>
+    <input type="password" id="password" placeholder="الرمز">
+    <br>
+    <button onclick="checkPassword()">دخول</button>
+</div>
+
+<!-- المحتوى -->
+<div class="container" id="content">
+    <h1>💗 دكرياتنا 💗</h1>
+
+    <div class="memory">
+        <img src="photo1.jpg">
+        <p>تدكري في اول مره مشينا مع بعض ليدو 💕</p>
+    </div>
+
+    <div class="memory">
+        <img src="photo2.jpg">
+        <p>فاكره اليوم داا يابت    💖</p>
+    </div>
+
+    <div class="memory">
+        <img src="photo3.jpg">
+        <p>كان بداية السنه يوم 3/1/2025💗💗</p>
+    </div>
+	
+	<div class="memory">
+        <img src="photo4.jpg">
+        <p> كان يوم خفيف عالقلب 💗💗</p>
+    </div>
+    <div class="memory">
+        <img src="photo5.jpg">
+        <p>لما بنخرج بيكون يوم حلو بنسبالي   💗</p>
+    </div>
+    <div class="memory">
+        <img src="photo6.jpg">
+        <p>بحبك جداا  💗</p>
+    </div>
+</div>
+
+<script>
+const correctPass = "1419";
+const music = document.getElementById("music");
+
+function checkPassword() {
+    const pass = document.getElementById("password").value;
+    if (pass === correctPass) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        music.play();
+        startHearts();
+    } else {
+        alert("الرمز غلط 💔");
+    }
+}
+
+/* القلوب */
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }, 400);
+}
+</script>
+
+</body>
+</html>
